@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI\\CarRentalAPI.csproj": {}
+    "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI\\CarRentalAPI.csproj": {
+    "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI\\CarRentalAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI.csproj",
         "projectName": "CarRentalAPI",
-        "projectPath": "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI\\CarRentalAPI.csproj",
+        "projectPath": "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI.csproj",
         "packagesPath": "C:\\Users\\Oriol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\CarRentalAPI\\obj\\",
+        "outputPath": "C:\\Users\\Oriol\\Documents\\BurProjects\\Omnidrone\\CarRentalAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -38,6 +38,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
