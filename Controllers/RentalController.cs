@@ -22,8 +22,15 @@ namespace CarRentalAPI.Controllers
         [HttpGet("{customer_id}/{car_id}/{days}")]
         public double GetRentalPrice(string customerId, string carId, string days)  // customer_id, car_id, days
         {
-            var cars = _carsService.GetCars();
-            return 0;
+            var customerId = _customersService.GetCustomerById(customerId);
+            var car = _carsService.GetCarById(carId);
+            // Multiply by the days of use and calculate price
+            double price = 0;
+
+            // Calculate the bonus points of the customer
+
+            
+            return price;
         }
     }
 }
