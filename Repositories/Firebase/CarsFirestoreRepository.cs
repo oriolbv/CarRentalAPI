@@ -27,7 +27,7 @@ namespace CarRentalAPI.Repositories.Firestore
 
         public IEnumerable<Car> GetCars()
         {           
-            Query carsRef = fireStoreDb.Collection("cars");
+            var carsRef = fireStoreDb.Collection("cars");
             var snapshot = carsRef.GetSnapshotAsync().Result;
 
             return snapshot.Documents
@@ -45,6 +45,13 @@ namespace CarRentalAPI.Repositories.Firestore
                     };
                 })
                 .ToList();
+        }
+
+        public Car GetCarById(string id) 
+        {
+            var carRef = fireStoreDb.Collection("cars").Document(id);
+            return (Car)carRef.GetSnapshotAsync().ToAsyncEnumerable();
+
         }
     }
 }

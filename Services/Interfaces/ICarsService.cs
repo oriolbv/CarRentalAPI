@@ -6,5 +6,6 @@ namespace CarRentalAPI.Services
     public interface ICarsService
     {
         IEnumerable<Car> GetCars();
+        Car GetCarById(string id);
     }
 }

@@ -18,5 +18,9 @@ namespace CarRentalAPI.Services
             return _carsRepository.GetCars();
         }
 
+        public Car GetCarById(string id) 
+        {
+            return _carsRepository.GetCarById(id);
+        }
     }
 }
