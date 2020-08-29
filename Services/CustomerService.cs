@@ -8,7 +8,7 @@ namespace CarRentalAPI.Services
     {
         private readonly ICustomersRepository _customersRepository;
 
-        public CarsService(ICustomersRepository customersRepository)
+        public CustomersService(ICustomersRepository customersRepository)
         {
             _customersRepository = customersRepository;
         }

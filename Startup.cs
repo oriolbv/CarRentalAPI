@@ -35,6 +35,9 @@ namespace CarRentalAPI
             //    dependency injection
             services.AddTransient<ICarsService, CarsService>();
             services.AddTransient<ICarsRepository, CarsFirestoreRepository>();
+            
+            services.AddTransient<ICustomersService, CustomersService>();
+            services.AddTransient<ICustomersRepository, CustomersFirestoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
