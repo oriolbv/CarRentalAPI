@@ -1,7 +1,10 @@
-public class Customer
+namespace CarRentalAPI.Models
 {
-    public long Id { get; set; }
-    public string Name { get; set; }
-    public string Surname { get; set; }
-    public int BonusPoints { get; set; }
+    public class Customer
+    {
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public int BonusPoints { get; set; }
+    }
 }

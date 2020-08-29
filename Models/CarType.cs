@@ -1,7 +1,10 @@
-public class CarType
+namespace CarRentalAPI.Models
 {
-    public long Id { get; set; }
-    public string Name { get; set; }
-    public double Price { get; set; }
-    public int Discount { get; set; }
+    public class CarType
+    {
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public int Discount { get; set; }
+    }
 }

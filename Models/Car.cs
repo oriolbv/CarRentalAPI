@@ -1,5 +1,8 @@
-public class Car
+namespace CarRentalAPI.Models
 {
-    public long Id { get; set; }
-    public CarType Type { get; set; }
+    public class Car
+    {
+        public string Id { get; set; }
+        public string Type { get; set; }
+    }
 }

@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using CarRentalAPI.Models;
+using CarRentalAPI.Services;
+using CarRentalAPI.Repositories;
+using CarRentalAPI.Repositories.Firestore;
 
 namespace CarRentalAPI
 {
@@ -27,9 +30,11 @@ namespace CarRentalAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CarRentalContext>(opt =>
-               opt.UseInMemoryDatabase("CarRental"));
             services.AddControllers();
+
+            //    dependency injection
+            services.AddTransient<ICarsService, CarsService>();
+            services.AddTransient<ICarsRepository, CarsFirestoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
