@@ -4,7 +4,7 @@ namespace CarRentalAPI.Models
 {
     public class CarRentalContext : DbContext
     {
-        public TodoContext(DbContextOptions<CarRentalContext> options)
+        public CarRentalContext(DbContextOptions<CarRentalContext> options)
             : base(options)
         {
         }
