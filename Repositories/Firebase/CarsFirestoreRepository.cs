@@ -38,7 +38,10 @@ namespace CarRentalAPI.Repositories.Firestore
                     return new Car
                     {
                         Id = document.Id,
-                        Type = dictionary["type"].ToString()
+                        Type = dictionary["type"].ToString(),
+                        Price = Convert.ToDouble(dictionary["price"]),
+                        Discount = Convert.ToDouble(dictionary["discount"]),
+                        DiscountDays = Convert.ToDouble(dictionary["discount_days"])
                     };
                 })
                 .ToList();

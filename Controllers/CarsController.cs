@@ -17,18 +17,6 @@ namespace CarRentalAPI.Controllers
             _carsService = carsService;
         }
 
-        // [HttpGet]
-        // // [ProducesResponseType(typeof(IEnumerable<string>), 200)]
-        // // [ProducesResponseType(typeof(IDictionary<string, string>), 400)]
-        // // [ProducesResponseType(500)]
-        // // public ActionResult<List<Car>> Get()
-        // public string Get()
-        // {
-        //     return "holi";
-        //     // var cars = _carsService.GetCars();
-        //     // return cars.ToList();
-        // }
-
         [HttpGet]
         public ActionResult<List<Car>> Get()
         {
