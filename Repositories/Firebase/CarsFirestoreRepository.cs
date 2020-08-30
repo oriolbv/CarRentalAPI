@@ -60,12 +60,12 @@ namespace CarRentalAPI.Repositories.Firestore
                         Type = dictionary["type"].ToString(),
                         Price = Convert.ToDouble(dictionary["price"]),
                         Discount = Convert.ToDouble(dictionary["discount"]),
-                        DiscountDays = Convert.ToInt32(dictionary["discount_days"])
+                        DiscountDays = Convert.ToInt32(dictionary["discount_days"]),
+                        BonusPoints = Convert.ToInt32(dictionary["bonus_points"])
                     };
             }
 
             return null;
-
         }
     }
 }

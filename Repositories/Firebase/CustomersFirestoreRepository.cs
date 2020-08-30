@@ -62,5 +62,21 @@ namespace CarRentalAPI.Repositories.Firestore
 
             return null;    
         }
+
+        public int UpdateCustomerBonusPoints(string id, int bonusPoints) {
+            var customerRef = fireStoreDb.Collection("customers").Document(id);
+            var snapshot = customerRef.GetSnapshotAsync().Result;
+            if (!snapshot.Exists) 
+            {
+                return -1;
+            } 
+            else 
+            {
+                var dictionary = snapshot.ToDictionary();
+                dictionary["bonus_points"] = Convert.ToInt32(dictionary["bonus_points"]) + bonusPoints;
+                customerRef.UpdateAsync(dictionary);
+            }
+            return 0;
+        }
     }
 }

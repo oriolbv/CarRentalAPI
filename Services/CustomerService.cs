@@ -23,5 +23,9 @@ namespace CarRentalAPI.Services
             return _customersRepository.GetCustomerById(id);
         }
 
+        public int UpdateCustomerBonusPoints(string id, int bonusPoints) 
+        {
+            return _customersRepository.UpdateCustomerBonusPoints(id, bonusPoints);
+        }
     }
 }

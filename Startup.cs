@@ -30,12 +30,12 @@ namespace CarRentalAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             
             //    dependency injection
+            // Firebase
             services.AddTransient<ICarsService, CarsService>();
             services.AddTransient<ICarsRepository, CarsFirestoreRepository>();
-            
             services.AddTransient<ICustomersService, CustomersService>();
             services.AddTransient<ICustomersRepository, CustomersFirestoreRepository>();
         }

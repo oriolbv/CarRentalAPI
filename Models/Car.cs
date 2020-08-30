@@ -7,5 +7,6 @@ namespace CarRentalAPI.Models
         public double Price { get; set; }
         public double Discount { get; set; }
         public int DiscountDays { get; set; }
+        public int BonusPoints { get; set; }
     }
 }

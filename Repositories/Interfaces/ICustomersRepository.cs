@@ -7,5 +7,6 @@ namespace CarRentalAPI.Repositories
     {
         IEnumerable<Customer> GetCustomers();
         Customer GetCustomerById(string id);
+        int UpdateCustomerBonusPoints(string id, int bonusPoints);
     }
 }
