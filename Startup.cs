@@ -44,7 +44,6 @@ namespace CarRentalAPI
             // Internal Storage
             // services.AddTransient<ICarsRepository, CarsInternalRepository>();
             // services.AddTransient<ICustomersRepository, CustomersInternalRepository>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

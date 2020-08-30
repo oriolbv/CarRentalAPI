@@ -31,7 +31,7 @@ namespace CarRentalAPI.Controllers
             double totalPrice = 0;
             foreach(Rental rental in rentals) {
                 var car = _carsService.GetCarById(rental.CarId);
-                if (car.IsAvailable == false) 
+                if (car == null || car.IsAvailable == false) 
                 {
                     // If is not available, the rent of this car is not possible
                     continue;
