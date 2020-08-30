@@ -18,7 +18,7 @@ namespace CarRentalAPI.Repositories.Firestore
 
         public CustomersFirestoreRepository()
         {
-            string filepath = Path.Combine(AppContext.BaseDirectory + "/carrentalapi-c005eefa1574.json");  
+            string filepath = Path.Combine(AppContext.BaseDirectory + "/carrentalapi.json");  
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", filepath);  
             fireStoreDb = FirestoreDb.Create(PROJECT_ID);
         }
