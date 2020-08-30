@@ -15,6 +15,7 @@ using CarRentalAPI.Models;
 using CarRentalAPI.Services;
 using CarRentalAPI.Repositories;
 using CarRentalAPI.Repositories.Firestore;
+using CarRentalAPI.Repositories.InternalStorage;
 
 namespace CarRentalAPI
 {
@@ -32,12 +33,18 @@ namespace CarRentalAPI
         {
             services.AddControllers().AddNewtonsoftJson();
             
-            //    dependency injection
-            // Firebase
+            // Dependency injection
             services.AddTransient<ICarsService, CarsService>();
-            services.AddTransient<ICarsRepository, CarsFirestoreRepository>();
             services.AddTransient<ICustomersService, CustomersService>();
+            
+            // Firebase 
+            services.AddTransient<ICarsRepository, CarsFirestoreRepository>();
             services.AddTransient<ICustomersRepository, CustomersFirestoreRepository>();
+
+            // Internal Storage
+            // services.AddTransient<ICarsRepository, CarsInternalRepository>();
+            // services.AddTransient<ICustomersRepository, CustomersInternalRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -22,5 +22,10 @@ namespace CarRentalAPI.Services
         {
             return _carsRepository.GetCarById(id);
         }
+        
+        public int UpdateCarAvailability(string id, bool isAvailable) 
+        {
+            return _carsRepository.UpdateCarAvailability(id, isAvailable);
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace CarRentalAPI.Repositories.Firestore
 
         public CarsFirestoreRepository()
         {
-            string filepath = Path.Combine(AppContext.BaseDirectory + "/carrentalapi-c005eefa1574.json");  
+            string filepath = Path.Combine(AppContext.BaseDirectory + "/carrentalapi.json");  
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", filepath);  
             fireStoreDb = FirestoreDb.Create(PROJECT_ID);
             
@@ -41,7 +41,8 @@ namespace CarRentalAPI.Repositories.Firestore
                         Type = dictionary["type"].ToString(),
                         Price = Convert.ToDouble(dictionary["price"]),
                         Discount = Convert.ToDouble(dictionary["discount"]),
-                        DiscountDays = Convert.ToInt32(dictionary["discount_days"])
+                        DiscountDays = Convert.ToInt32(dictionary["discount_days"]),
+                        IsAvailable = Convert.ToBoolean(dictionary["is_available"])
                     };
                 })
                 .ToList();
@@ -61,11 +62,30 @@ namespace CarRentalAPI.Repositories.Firestore
                         Price = Convert.ToDouble(dictionary["price"]),
                         Discount = Convert.ToDouble(dictionary["discount"]),
                         DiscountDays = Convert.ToInt32(dictionary["discount_days"]),
-                        BonusPoints = Convert.ToInt32(dictionary["bonus_points"])
+                        BonusPoints = Convert.ToInt32(dictionary["bonus_points"]),
+                        IsAvailable = Convert.ToBoolean(dictionary["is_available"])
                     };
             }
 
             return null;
         }
+
+        public int UpdateCarAvailability(string id, bool isAvailable) 
+        {
+            var carRef = fireStoreDb.Collection("cars").Document(id);
+            var snapshot = carRef.GetSnapshotAsync().Result;
+            if (!snapshot.Exists) 
+            {
+                return -1;
+            } 
+            else 
+            {
+                var dictionary = snapshot.ToDictionary();
+                dictionary["is_available"] = isAvailable;
+                carRef.UpdateAsync(dictionary);
+            }
+            return 0;
+        }
+
     }
 }

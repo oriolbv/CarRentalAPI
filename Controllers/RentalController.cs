@@ -18,6 +18,11 @@ namespace CarRentalAPI.Controllers
             _customersService = customersService;
         }
 
+
+        /**
+            Method to rent a car and get its price. 
+            If one of the cars rented is not available, the cost will be 0.
+        **/
         [Route("price")]
         [HttpGet()]
         public double GetRentalPrice(string customer_id, [FromBody]Rental[] rentals)
@@ -26,6 +31,11 @@ namespace CarRentalAPI.Controllers
             double totalPrice = 0;
             foreach(Rental rental in rentals) {
                 var car = _carsService.GetCarById(rental.CarId);
+                if (car.IsAvailable == false) 
+                {
+                    // If is not available, the rent of this car is not possible
+                    continue;
+                }
                 double price = 0;
                 int _days = Convert.ToInt32(rental.Days);
                 // Calculate the price of the car rental
@@ -52,11 +62,18 @@ namespace CarRentalAPI.Controllers
 
                 // Update customer bonus points
                 _customersService.UpdateCustomerBonusPoints(customer_id, car.BonusPoints);
+                // Update availability of the car
+                _carsService.UpdateCarAvailability(car.Id, false);
             }
             
             return totalPrice;
         }
 
+
+        /**
+            Method to return a car and get its surcharges depending on the extra days. 
+            The returned cars will be available until this method finishes.
+        **/
         [Route("surcharges")]
         [HttpGet()]
         public double GetSurcharges([FromBody]Rental[] rentals)
@@ -67,6 +84,8 @@ namespace CarRentalAPI.Controllers
                 // Multiply by the days of use and calculate price
                 double surcharge = car.Price * Convert.ToInt32(rental.Days);
                 totalSurcharge += surcharge;
+                // Update availability of the car
+                _carsService.UpdateCarAvailability(car.Id, true);
             }
             return totalSurcharge;
         }

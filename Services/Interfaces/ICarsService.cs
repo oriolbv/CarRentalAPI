@@ -7,5 +7,6 @@ namespace CarRentalAPI.Services
     {
         IEnumerable<Car> GetCars();
         Car GetCarById(string id);
+        int UpdateCarAvailability(string id, bool isAvailable);
     }
 }
