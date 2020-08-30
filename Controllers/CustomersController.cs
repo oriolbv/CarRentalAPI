@@ -23,5 +23,17 @@ namespace CarRentalAPI.Controllers
             var customers = _customersService.GetCustomers();
             return customers.ToList();
         }
+
+        [Route("detail")]
+        [HttpGet()]
+        public ActionResult<Customer> GetCustomerById(string customer_id)
+        {
+            var customer = _customersService.GetCustomerById(customer_id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            return customer;
+        }
     }
 }

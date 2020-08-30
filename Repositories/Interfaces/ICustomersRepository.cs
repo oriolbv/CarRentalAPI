@@ -6,5 +6,6 @@ namespace CarRentalAPI.Repositories
     public interface ICustomersRepository
     {
         IEnumerable<Customer> GetCustomers();
+        Customer GetCustomerById(string id);
     }
 }

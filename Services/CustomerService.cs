@@ -18,5 +18,10 @@ namespace CarRentalAPI.Services
             return _customersRepository.GetCustomers();
         }
 
+        public Customer GetCustomerById(string id) 
+        {
+            return _customersRepository.GetCustomerById(id);
+        }
+
     }
 }

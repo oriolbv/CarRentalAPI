@@ -41,7 +41,7 @@ namespace CarRentalAPI.Repositories.Firestore
                         Type = dictionary["type"].ToString(),
                         Price = Convert.ToDouble(dictionary["price"]),
                         Discount = Convert.ToDouble(dictionary["discount"]),
-                        DiscountDays = Convert.ToDouble(dictionary["discount_days"])
+                        DiscountDays = Convert.ToInt32(dictionary["discount_days"])
                     };
                 })
                 .ToList();
@@ -50,7 +50,21 @@ namespace CarRentalAPI.Repositories.Firestore
         public Car GetCarById(string id) 
         {
             var carRef = fireStoreDb.Collection("cars").Document(id);
-            return (Car)carRef.GetSnapshotAsync().ToAsyncEnumerable();
+            var snapshot = carRef.GetSnapshotAsync().Result;
+            if (snapshot.Exists) 
+            {
+                var dictionary = snapshot.ToDictionary();
+                return new Car
+                    {
+                        Id = carRef.Id,
+                        Type = dictionary["type"].ToString(),
+                        Price = Convert.ToDouble(dictionary["price"]),
+                        Discount = Convert.ToDouble(dictionary["discount"]),
+                        DiscountDays = Convert.ToInt32(dictionary["discount_days"])
+                    };
+            }
+
+            return null;
 
         }
     }

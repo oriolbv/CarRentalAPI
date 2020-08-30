@@ -43,5 +43,24 @@ namespace CarRentalAPI.Repositories.Firestore
                 })
                 .ToList();
         }
+
+        public Customer GetCustomerById(string id) 
+        {
+            var customerRef = fireStoreDb.Collection("customers").Document(id);
+            var snapshot = customerRef.GetSnapshotAsync().Result;
+            if (snapshot.Exists) 
+            {
+                var dictionary = snapshot.ToDictionary();
+                return new Customer
+                    {
+                        Id = customerRef.Id,
+                        Name = dictionary["name"].ToString(),
+                        Surname = dictionary["surname"].ToString(),
+                        BonusPoints = Convert.ToInt32(dictionary["bonus_points"])
+                    };
+            }
+
+            return null;    
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace CarRentalAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            
             //    dependency injection
             services.AddTransient<ICarsService, CarsService>();
             services.AddTransient<ICarsRepository, CarsFirestoreRepository>();

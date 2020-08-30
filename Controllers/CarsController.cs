@@ -24,15 +24,15 @@ namespace CarRentalAPI.Controllers
             return cars.ToList();
         }
 
-        [HttpGet]
-        public ActionResult<Car> Get(string id)
+        [Route("detail")]
+        [HttpGet()]
+        public ActionResult<Car> GetCarById(string car_id)
         {
-            var car = _carsService.GetCarById(id);
+            var car = _carsService.GetCarById(car_id);
             if (car == null)
             {
                 return NotFound();
             }
-
             return car;
         }
     }
